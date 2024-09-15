@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://djfpd12rnjet"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_s5a03"]
+[ext_resource type="Texture2D" uid="uid://peg43mdjdac8" path="res://background.png" id="2_6l8p5"]
+[ext_resource type="Script" path="res://col.gd" id="2_jxeh5"]
+[ext_resource type="Script" path="res://draw.gd" id="3_6joye"]
+[ext_resource type="Script" path="res://mouse_collider.gd" id="4_vocvq"]
+[ext_resource type="Script" path="res://ray_cast_2d.gd" id="6_r7o43"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_25vrq"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_s5a03")
+
+[node name="Col1" type="Node2D" parent="."]
+position = Vector2(72, 219)
+script = ExtResource("2_jxeh5")
+
+[node name="Col2" type="Node2D" parent="."]
+position = Vector2(221, 218)
+script = ExtResource("2_jxeh5")
+
+[node name="Col3" type="Node2D" parent="."]
+position = Vector2(369, 219)
+script = ExtResource("2_jxeh5")
+
+[node name="Col4" type="Node2D" parent="."]
+position = Vector2(517, 218)
+script = ExtResource("2_jxeh5")
+
+[node name="Col5" type="Node2D" parent="."]
+position = Vector2(665, 218)
+script = ExtResource("2_jxeh5")
+
+[node name="Col6" type="Node2D" parent="."]
+position = Vector2(814, 218)
+script = ExtResource("2_jxeh5")
+
+[node name="Col7" type="Node2D" parent="."]
+position = Vector2(962, 219)
+script = ExtResource("2_jxeh5")
+
+[node name="Draw" type="Node2D" parent="."]
+position = Vector2(962, 20)
+script = ExtResource("3_6joye")
+
+[node name="FoundationSpade" type="Node2D" parent="."]
+position = Vector2(73, 19)
+
+[node name="FoundationClub" type="Node2D" parent="."]
+position = Vector2(219, 18)
+
+[node name="FoundationHeart" type="Node2D" parent="."]
+position = Vector2(369, 20)
+
+[node name="FoundationDiamond" type="Node2D" parent="."]
+position = Vector2(517, 20)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 4
+visible = false
+show_behind_parent = true
+z_index = -100
+offset_left = -6.0
+offset_top = -9.0
+offset_right = 1164.0
+offset_bottom = 656.0
+color = Color(0, 0.36, 0.126, 1)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -99
+position = Vector2(80, 27)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_6l8p5")
+offset = Vector2(1437.5, 520)
+
+[node name="MouseCollider" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 512
+script = ExtResource("4_vocvq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseCollider"]
+shape = SubResource("CircleShape2D_25vrq")
+
+[node name="TextEdit" type="Label" parent="MouseCollider"]
+offset_right = 30.0
+offset_bottom = 23.0
+text = "test"
+
+[node name="RayCast2D" type="RayCast2D" parent="MouseCollider"]
+target_position = Vector2(0, 2)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("6_r7o43")
+
+[connection signal="area_entered" from="MouseCollider" to="MouseCollider" method="_on_area_entered"]
+[connection signal="body_entered" from="MouseCollider" to="MouseCollider" method="_on_body_entered"]
