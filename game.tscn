@@ -82,11 +82,6 @@ script = ExtResource("4_vocvq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseCollider"]
 shape = SubResource("CircleShape2D_25vrq")
 
-[node name="TextEdit" type="Label" parent="MouseCollider"]
-offset_right = 30.0
-offset_bottom = 23.0
-text = "test"
-
 [node name="RayCast2D" type="RayCast2D" parent="MouseCollider"]
 target_position = Vector2(0, 2)
 hit_from_inside = true

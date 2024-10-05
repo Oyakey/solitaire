@@ -33,27 +33,3 @@ func _process(_delta: float) -> void:
 	
 	var frameNumber := suitNumber * 13 + value - 1;
 	$Card.frame = frameNumber;
-
-# func _on_area_entered(_area: Area2D) -> void:
-# 	$Card.play('Highlight');
-# 	print('area')
-
-# func _on_area_exited(_area: Area2D) -> void:
-# 	$Card.play('Card');
-# 	print('area')
-
-# func _on_body_entered(_body: CollisionObject2D) -> void:
-# 	$Card.play('Highlight');
-# 	print('body')
-
-# func _on_body_exited(_body: CollisionObject2D) -> void:
-# 	$Card.play('Card');
-# 	print('body')
-
-
-# func _on_texture_button_mouse_entered() -> void:
-# 	print('mouse');
-
-
-# func _on_texture_button_mouse_exited() -> void:
-# 	print('mouse');

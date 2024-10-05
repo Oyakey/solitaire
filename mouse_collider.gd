@@ -1,5 +1,8 @@
 extends Area2D
 
+var colliding := [];
+var focused : Node2D;
+var dragging := false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +29,19 @@ func _physics_process(_delta: float) -> void:
 	if result:
 		print(result);
 
+
+func _input(event: InputEvent) -> void:
+	# Mouse in viewport coordinates.
+	if event is InputEventMouseButton:
+		print(colliding)
+	if (focused):
+		dragging = true;
+		
+	# elif event is InputEventMouseMotion:
+	# 	print("Mouse Motion at: ", event.position)
+
+	# Print the size of the viewport.
+	# print("Viewport Resolution is: ", get_viewport().get_visible_rect().size)
 
 func _on_mouse_entered() -> void:
 	print('mouseEntered');
